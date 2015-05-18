@@ -30,3 +30,11 @@ generate.full.data <- function() {
   write.csv(classes.full, "full_classes.csv", row.names=FALSE)
   classes.full
 }
+
+merge_classes <- function() {
+  meta <- read.csv("Metadata.csv")
+  classes <- read.csv("full_classes.csv")
+  both <- merge(meta, classes)
+  write.csv2(both, "meta_pers.csv", row.names=FALSE)
+  both
+}

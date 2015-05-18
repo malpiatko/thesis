@@ -1,4 +1,5 @@
 .Rproj.user
-.Rhistory
-.RData
+*.Rhistory
+*.RData
+/personality/data
 /personality/Personality_Scores
