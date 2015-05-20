@@ -2,8 +2,8 @@ import argparse, subprocess, os.path
 
 
 def extract(args):
-	with open(args.features, 'w') as f_file:
-		f_line = f.readline()
+	with open(args.features, 'r') as f_file:
+		f_line = f_file.readline()
 		classes = f_line.split(';')[1:]
 		for f_line in f_file:
 			line_args = f_line.split(';')
@@ -29,10 +29,10 @@ def make_flag(c, v):
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
 	parser.add_argument('corpus', type=dir, help="Path to the corpus")
-	parser.add_argument('config', type=file, help="Path to the config file in format required by openSMILE")
-	parser.add_argument('-f', '--features', type=file, help="Path to the csv file containing classes")
-	parser.add_argument('-o', '--output', type=argparse.FileType('w'), default="output.arff", help="Path to the output arff file")
-	parser.add_argument('--arfftargets', type=file, default="arff_targets_gui_labels.conf.inc", help="Path to the config file with the labels")
+	parser.add_argument('config', type=str, help="Path to the config file in format required by openSMILE")
+	parser.add_argument('-f', '--features', type=str, help="Path to the csv file containing classes")
+	parser.add_argument('-o', '--output', type=str, default="output.arff", help="Path to the output arff file")
+	parser.add_argument('--arfftargets', type=str, default="arff_targets_gui_labels.conf.inc", help="Path to the config file with the labels")
 	ret = extract(parser.parse_args())
 	exit(ret)
 
