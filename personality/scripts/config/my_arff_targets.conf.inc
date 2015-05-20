@@ -29,7 +29,7 @@ class[5].name = \cm[na6{Conscientiousness}: attribute name]
 class[5].type = {0,1}
 target[5].all = \cm[Conscientiousness{unknown}: instance class label]
 
-class[6].name = \cm[na7{Neuroticism}: attribute name}
+class[6].name = \cm[na7{Neuroticism}: attribute name]
 class[6].type = {0,1}
 target[6].all = \cm[Neuroticism{unknown}: instance class label]
 
