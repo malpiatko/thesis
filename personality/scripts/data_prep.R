@@ -32,9 +32,9 @@ generate.full.data <- function() {
 }
 
 merge_classes <- function() {
-  meta <- read.csv("Metadata.csv")
-  classes <- read.csv("full_classes.csv")
+  meta <- read.csv("../data/csvs/Metadata.csv")
+  classes <- read.csv("../data/csvs/personality_scores.csv")
   both <- merge(meta, classes)
-  write.csv2(both, "meta_pers.csv", row.names=FALSE)
+  write.csv2(both, "../data/csvs/labels_all.csv", row.names=FALSE)
   both
 }

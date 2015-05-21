@@ -1,21 +1,25 @@
-import argparse, subprocess, os.path
+import argparse, subprocess, os.path, csv
 
 
 def extract(args):
 	with open(args.features, 'r') as f_file:
-		f_line = f_file.readline()
-		classes = f_line.split(';')[1:]
-		for f_line in f_file:
-			line_args = f_line.split(';')
-			file_name = basename(line_args[0])
-			values = line_args[1:]
+		f_reader = csv.reader(f_file, delimiter=';')
+		classes = f_reader.next()[1:]
+		for f_line in f_reader:
+			instance_name = f_line[0]
+			file_name = os.path.join(args.corpus, instance_name + ".wav")
+			values = f_line[1:]
 			make_args(classes, values)
-			call_string = "SMILExtract -C {} -I {} -0 {} -instname {} -corpus {} -arfftargetsfile {} ".format(
-				config, file_name, args.output, args.corpus, arfftargets)
-			ret = subprocess.call(call_string + make_args(classes, values))
-			if(ret):
-				print "."
-			else:
+			call_string = "SMILExtract -C {} -I {} -O {} -instname {} -arfftargetsfile {} ".format(
+				args.config, file_name, args.output, instance_name, args.arfftargets)
+			print "."
+			try:
+				print call_string + make_args(classes, values)
+				subprocess.check_output(call_string + make_args(classes, values))
+			except subprocess.CalledProcessError as e:
+				error = json.loads(e.output[7:])
+				print error['code']
+				print error['message']
 				return 1
 	return 0
 
@@ -28,11 +32,12 @@ def make_flag(c, v):
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
-	parser.add_argument('corpus', type=dir, help="Path to the corpus")
+	parser.add_argument('corpus', type=str, help="Path to the corpus")
 	parser.add_argument('config', type=str, help="Path to the config file in format required by openSMILE")
 	parser.add_argument('-f', '--features', type=str, help="Path to the csv file containing classes")
 	parser.add_argument('-o', '--output', type=str, default="output.arff", help="Path to the output arff file")
 	parser.add_argument('--arfftargets', type=str, default="arff_targets_gui_labels.conf.inc", help="Path to the config file with the labels")
-	ret = extract(parser.parse_args())
+	args = parser.parse_args()
+	ret = extract(args)
 	exit(ret)
 
