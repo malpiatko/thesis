@@ -1,0 +1,1 @@
+echo `python3 scripts/smile_extract.py -f personality/data/csvs/labels_all.csv -o personality/geneva.arff --arfftargets personality/scripts/config/my_arff_targets.conf.inc personality/Audio_clips config/genevaExtended/GenevaExtended.conf`
