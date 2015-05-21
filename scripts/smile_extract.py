@@ -11,7 +11,7 @@ def extract(args):
 			values = f_line[1:]
 			make_args(classes, values)
 			print (".", end="", flush=True)
-			call_string = "SMILExtract -C {} -I {} -O {} -instname {} -arfftargetsfile {} -loglevel 1".format(
+			call_string = "SMILExtract -C {} -I {} -O {} -instname {} -arfftargetsfile {} -loglevel 1 ".format(
 				args.config, file_name, args.output, instance_name, args.arfftargets)
 			try:
 				args_array = (call_string + make_args(classes, values)).split(" ")
@@ -27,6 +27,13 @@ def make_args(classes, values):
 def make_flag(c, v):
 	return "-" + c + " " + v
 
+def silent_remove(output):
+	try:
+		os.remove(output)
+	except OSError:
+		pass
+
+
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
@@ -36,6 +43,7 @@ if __name__ == "__main__":
 	parser.add_argument('-o', '--output', type=str, default="output.arff", help="Path to the output arff file")
 	parser.add_argument('--arfftargets', type=str, default="arff_targets_gui_labels.conf.inc", help="Path to the config file with the labels")
 	args = parser.parse_args()
+	silent_remove(args.output)
 	ret = extract(args)
 	exit(ret)
 
