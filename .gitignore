@@ -1,5 +1,7 @@
 .Rproj.user
 *.Rhistory
 *.RData
+*.arff
+*.log
 /personality/data
 /personality/Personality_Scores
