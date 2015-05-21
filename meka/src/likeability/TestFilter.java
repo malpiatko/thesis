@@ -1,5 +1,8 @@
 package likeability;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import weka.core.Attribute;
 import weka.core.Instances;
 import weka.filters.Filter;
@@ -8,22 +11,33 @@ import weka.filters.unsupervised.instance.RemoveWithValues;
 
 public class TestFilter extends SimpleBatchFilter {
 	
-	private Attribute attributeA;
-	private Attribute attributeB;
-
-	TestFilter(Attribute a, Attribute b) {
-		this.attributeA = a;
-		this.attributeB = b;
-	}
+	private Attribute a;
+	private Attribute b;
 	
 	@Override
 	protected Instances process(Instances inst) throws Exception {
-		RemoveWithValues partA = new RemoveWithValues();
-		partA.setAttributeIndex(Integer.toString(attributeA.index()));
-		partA.setInvertSelection(true);
-		partA.setNominalIndices("0");
-		Instances male = Filter.useFilter(inst, partA);
+		ArrayList<Instances> partitionsA = partition(inst, a);
+		ArrayList<Instances> partitions = new ArrayList<Instances>();
+		for(Instances data: partitionsA) {
+			partitions.addAll(partition(data, b));
+		}
 		return inst;
+	}
+	
+	/*
+	 * Partitions the data so that there's only one nominal value of the
+	 * attribute a in one partition.
+	 */
+	private ArrayList<Instances> partition(Instances data, Attribute a) throws Exception {
+		ArrayList<Instances> instances = new ArrayList<Instances>();
+		for (int i = 0; i < a.numValues(); i++){
+			RemoveWithValues rm = new RemoveWithValues();
+			rm.setAttributeIndex(Integer.toString(a.index()));
+			rm.setInvertSelection(true);
+			rm.setNominalIndices(Integer.toString(i));
+			instances.add(Filter.useFilter(data, rm));
+		}
+		return instances;
 	}
 
 	@Override
