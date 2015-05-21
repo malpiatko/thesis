@@ -4,7 +4,7 @@ import argparse, subprocess, os.path, csv
 def extract(args):
 	with open(args.features, 'r') as f_file:
 		f_reader = csv.reader(f_file, delimiter=';')
-		classes = f_reader.next()[1:]
+		classes = next(f_reader)[1:]
 		for f_line in f_reader:
 			instance_name = f_line[0]
 			file_name = os.path.join(args.corpus, instance_name + ".wav")
@@ -12,12 +12,12 @@ def extract(args):
 			make_args(classes, values)
 			call_string = "SMILExtract -C {} -I {} -O {} -instname {} -arfftargetsfile {} ".format(
 				args.config, file_name, args.output, instance_name, args.arfftargets)
-			print "."
+			print (".", end="")
 			try:
-				print call_string + make_args(classes, values)
-				subprocess.check_output(call_string + make_args(classes, values), shell=True)
+				print (call_string + make_args(classes, values))
+				subprocess.check_call(call_string + make_args(classes, values), shell=True)
 			except subprocess.CalledProcessError as e:
-				print e.output
+				print (e.output)
 				return 1
 	return 0
 
