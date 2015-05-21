@@ -15,11 +15,9 @@ def extract(args):
 			print "."
 			try:
 				print call_string + make_args(classes, values)
-				subprocess.check_output(call_string + make_args(classes, values))
+				subprocess.check_output(call_string + make_args(classes, values), shell=True)
 			except subprocess.CalledProcessError as e:
-				error = json.loads(e.output[7:])
-				print error['code']
-				print error['message']
+				print e.output
 				return 1
 	return 0
 
