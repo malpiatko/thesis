@@ -6,7 +6,7 @@ def extract(args):
 		f_reader = csv.reader(f_file, delimiter=';')
 		classes = next(f_reader)[1:]
 		for f_line in f_reader:
-			instance_name = f_line[0]
+			instance_name = os.path.splitext(f_line[0])[0]
 			file_name = os.path.join(args.corpus, instance_name + ".wav")
 			values = f_line[1:]
 			make_args(classes, values)
