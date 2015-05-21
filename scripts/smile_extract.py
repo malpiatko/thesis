@@ -24,7 +24,7 @@ def extract(args):
 	return 0
 
 def make_args(classes, values):
-	return " ".join([make_flag(c, v) for c, v in zip(classes, values[1:])])
+	return " ".join([make_flag(c, v) for c, v in zip(classes, values)])
 
 def make_flag(c, v):
 	return "-" + c + " " + v
