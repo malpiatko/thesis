@@ -10,12 +10,12 @@ def extract(args):
 			file_name = os.path.join(args.corpus, instance_name + ".wav")
 			values = f_line[1:]
 			make_args(classes, values)
-			call_string = "SMILExtract -C {} -I {} -O {} -instname {} -arfftargetsfile {} ".format(
+			print (".", end="", flush=True)
+			call_string = "SMILExtract -C {} -I {} -O {} -instname {} -arfftargetsfile {} -loglevel 1".format(
 				args.config, file_name, args.output, instance_name, args.arfftargets)
-			print (".", end="")
 			try:
-				print (call_string + make_args(classes, values))
-				subprocess.check_call(call_string + make_args(classes, values), shell=True)
+				args_array = (call_string + make_args(classes, values)).split(" ")
+				subprocess.check_call(args_array, stdout=subprocess.DEVNULL)
 			except subprocess.CalledProcessError as e:
 				print (e.output)
 				return 1
