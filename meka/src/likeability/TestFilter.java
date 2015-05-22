@@ -23,9 +23,6 @@ public class TestFilter extends SimpleBatchFilter {
 	
 	@Override
 	protected Instances process(Instances inst) throws Exception {
-		if(this.isFirstBatchDone()){
-			setInvert(true);
-		}
 		ArrayList<Instances> partitionsA = partition(inst, a);
 		ArrayList<Instances> partitions = new ArrayList<Instances>();
 		for(Instances data: partitionsA) {
@@ -63,6 +60,7 @@ public class TestFilter extends SimpleBatchFilter {
 			filter.setSampleSizePercent(sampleSizePercent);
 			filter.setInputFormat(inst);
 			Instances curr = Filter.useFilter(inst, filter);
+			System.out.println(inst.size() + " " + curr.size());
 			output.addAll(curr);
 		}
 		return output;
