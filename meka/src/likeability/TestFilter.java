@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import weka.core.Attribute;
+import weka.core.Capabilities.Capability;
 import weka.core.Instances;
+import weka.core.Capabilities;
 import weka.filters.Filter;
 import weka.filters.SimpleBatchFilter;
 import weka.filters.unsupervised.instance.RemoveWithValues;
@@ -40,7 +42,8 @@ public class TestFilter extends SimpleBatchFilter {
 			RemoveWithValues rm = new RemoveWithValues();
 			rm.setAttributeIndex(Integer.toString(a.index()));
 			rm.setInvertSelection(true);
-			rm.setNominalIndices(Integer.toString(i));
+			rm.setNominalIndices(Integer.toString(i+1));
+			rm.setInputFormat(data);
 			instances.add(Filter.useFilter(data, rm));
 		}
 		return instances;
@@ -48,13 +51,17 @@ public class TestFilter extends SimpleBatchFilter {
 	
 	private Instances getTestSet(List<Instances> insts) throws Exception {
 		Instances output = new Instances(insts.get(0), 0);
-		Resample filter = new Resample();
-		filter.setRandomSeed(seed);
-		filter.setNoReplacement(true);
-		filter.setInvertSelection(invert);
-		filter.setSampleSizePercent(sampleSizePercent);
+		
 		for(Instances inst: insts) {
-			output.addAll(Filter.useFilter(inst, filter));
+			Resample filter = new Resample();
+			filter.setRandomSeed(seed);
+			filter.setNoReplacement(true);
+			filter.setInvertSelection(invert);
+			filter.setSampleSizePercent(sampleSizePercent);
+			filter.setInputFormat(inst);
+			Instances curr = Filter.useFilter(inst, filter);
+			System.out.println(inst.size() + " " + curr.size());
+			output.addAll(curr);
 		}
 		return output;
 		
@@ -73,8 +80,16 @@ public class TestFilter extends SimpleBatchFilter {
 				+ " produce the final set.";
 	}
 	
+	public Capabilities getCapabilities() {
+	     Capabilities result = super.getCapabilities();
+	     result.enableAllAttributes();
+	     result.enableAllClasses();
+	     result.enable(Capability.NO_CLASS);  // filter doesn't need class to be set
+	     return result;
+	   }
+	
 	public static void main(String[] args) {
-	     runFilter(new RemoveWithValues(), args);
+	     runFilter(new TestFilter(), args);
 	}
 	
 	public Attribute getA() {

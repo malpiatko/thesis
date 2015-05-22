@@ -23,6 +23,7 @@ public class Main {
 		TestFilter filter = new TestFilter();
 		filter.setA(data.attribute("gender"));
 		filter.setB(data.attribute("age"));
+		filter.setInputFormat(data);
 		Instances test = Filter.useFilter(data, filter);
 		filter.setInvert(true);
 		Instances train = Filter.useFilter(data, filter);
