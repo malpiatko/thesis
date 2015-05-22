@@ -38,12 +38,11 @@ public class TestFilter extends SimpleBatchFilter {
 	 */
 	private ArrayList<Instances> partition(Instances data, Attribute att) throws Exception {
 		ArrayList<Instances> instances = new ArrayList<Instances>();
-		System.out.println("num Val" + att.numValues());
 		for (int i = 0; i < att.numValues(); i++){
 			RemoveWithValues rm = new RemoveWithValues();
 			rm.setAttributeIndex(Integer.toString(att.index()+1));
 			rm.setInvertSelection(true);
-			rm.setNominalIndices((i+1) + "-" + (i+1));
+			rm.setNominalIndices(Integer.toString(i+1));
 			rm.setInputFormat(data);
 			instances.add(Filter.useFilter(data, rm));
 		}
