@@ -36,13 +36,14 @@ public class TestFilter extends SimpleBatchFilter {
 	 * Partitions the data so that there's only one nominal value of the
 	 * attribute a in one partition.
 	 */
-	private ArrayList<Instances> partition(Instances data, Attribute a) throws Exception {
+	private ArrayList<Instances> partition(Instances data, Attribute att) throws Exception {
 		ArrayList<Instances> instances = new ArrayList<Instances>();
-		for (int i = 0; i < a.numValues(); i++){
+		System.out.println("num Val" + att.numValues());
+		for (int i = 0; i < att.numValues(); i++){
 			RemoveWithValues rm = new RemoveWithValues();
-			rm.setAttributeIndex(Integer.toString(a.index()));
+			rm.setAttributeIndex(Integer.toString(att.index()+1));
 			rm.setInvertSelection(true);
-			rm.setNominalIndices(Integer.toString(i+1));
+			rm.setNominalIndices((i+1) + "-" + (i+1));
 			rm.setInputFormat(data);
 			instances.add(Filter.useFilter(data, rm));
 		}
