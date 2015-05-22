@@ -23,6 +23,10 @@ public class TestFilter extends SimpleBatchFilter {
 	
 	@Override
 	protected Instances process(Instances inst) throws Exception {
+		if(this.isFirstBatchDone()){
+			System.out.println("here");
+			setInvert(true);
+		}
 		ArrayList<Instances> partitionsA = partition(inst, a);
 		ArrayList<Instances> partitions = new ArrayList<Instances>();
 		for(Instances data: partitionsA) {
