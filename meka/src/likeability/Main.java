@@ -25,8 +25,6 @@ public class Main {
 		filter.setB(data.attribute("age"));
 		filter.setInputFormat(data);
 		Instances test = Filter.useFilter(data, filter);
-		filter.setInvert(true);
-		filter.setInputFormat(data);
 		Instances train = Filter.useFilter(data, filter);
 		ArffSaver saver = new ArffSaver();
 		saver.setInstances(train);

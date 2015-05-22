@@ -13,7 +13,7 @@ import weka.filters.unsupervised.instance.RemoveWithValues;
 import weka.filters.unsupervised.instance.Resample;
 
 @SuppressWarnings("serial")
-public class TestFilter extends SimpleBatchFilter {
+public class TestFilter extends Filter {
 	
 	private Attribute a;
 	private Attribute b;
@@ -22,14 +22,24 @@ public class TestFilter extends SimpleBatchFilter {
 	private int seed = 1;
 	
 	@Override
-	protected Instances process(Instances inst) throws Exception {
+	public boolean batchFinished() throws Exception {
+		if(isFirstBatchDone()) {
+			invert = true;
+		}
+		if (getInputFormat() == null)
+			throw new NullPointerException("No input instance format defined");
+		Instances inst = getInputFormat();
 		ArrayList<Instances> partitionsA = partition(inst, a);
 		ArrayList<Instances> partitions = new ArrayList<Instances>();
 		for(Instances data: partitionsA) {
 			partitions.addAll(partition(data, b));
 		}
 		
-		return getTestSet(partitions);
+		getTestSet(partitions);
+		flushInput();
+		m_NewBatch = true;
+		m_FirstBatchDone = true;
+		return (numPendingOutput() != 0);
 	}
 	
 	/*
@@ -49,8 +59,8 @@ public class TestFilter extends SimpleBatchFilter {
 		return instances;
 	}
 	
-	private Instances getTestSet(List<Instances> insts) throws Exception {
-		Instances output = new Instances(insts.get(0), 0);
+	private void getTestSet(List<Instances> insts) throws Exception {
+		Instances output = getOutputFormat();
 		
 		for(Instances inst: insts) {
 			Resample filter = new Resample();
@@ -61,18 +71,18 @@ public class TestFilter extends SimpleBatchFilter {
 			filter.setInputFormat(inst);
 			Instances curr = Filter.useFilter(inst, filter);
 			System.out.println(inst.size() + " " + curr.size());
-			output.addAll(curr);
+			curr.forEach((i) -> push(i));
 		}
-		return output;
-		
 	}
 
 	@Override
-	protected Instances determineOutputFormat(Instances arg) throws Exception {
-		return new Instances(arg, 0);
+	public boolean setInputFormat(Instances arg) throws Exception {
+		super.setInputFormat(arg);
+		Instances outputFormat = new Instances(arg, 0);
+		setOutputFormat(outputFormat);
+		return true;
 	}
 
-	@Override
 	public String globalInfo() {
 		return "A filter which partitions the data so that each partition contains"
 				+ " only instances with one value of attribute a and b, then takes "
