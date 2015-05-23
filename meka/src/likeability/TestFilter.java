@@ -8,7 +8,6 @@ import weka.core.Capabilities.Capability;
 import weka.core.Instances;
 import weka.core.Capabilities;
 import weka.filters.Filter;
-import weka.filters.SimpleBatchFilter;
 import weka.filters.unsupervised.instance.RemoveWithValues;
 import weka.filters.unsupervised.instance.Resample;
 

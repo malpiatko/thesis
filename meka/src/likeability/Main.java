@@ -3,11 +3,8 @@ package likeability;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
 
 import weka.filters.Filter;
-import weka.filters.unsupervised.instance.RemoveWithValues;
-import weka.core.Attribute;
 import weka.core.Instances;
 import weka.core.converters.ArffSaver;
 

@@ -1,4 +1,4 @@
-package thesis;
+package main;
 
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
