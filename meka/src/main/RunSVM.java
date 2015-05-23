@@ -65,13 +65,12 @@ public class RunSVM {
 		double c = 0;
 		System.out.println(a.name());
 		for(int i = compPrec; i >= 0; i--){
-			Instances newdata = new Instances(data);
-			Evaluation eval = new Evaluation(newdata);
+			Evaluation eval = new Evaluation(data);
 			SMO classifier = new SMO();
 			double currC = Math.pow(10, -i);
 			classifier.setC(currC);
 			System.out.println(classifier.getC());
-			eval.crossValidateModel(classifier, newdata, folds, new Random(seed));
+			eval.crossValidateModel(classifier, data, folds, new Random(seed));
 			double uar = getUAR(eval, a.numValues());
 			if (uar > maxRecall){
 				maxRecall = uar;
