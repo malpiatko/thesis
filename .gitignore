@@ -3,5 +3,9 @@
 *.RData
 *.arff
 *.log
-/personality/data
-/personality/Personality_Scores
+/personality/*
+/likeability/arff/
+meka/.*
+*.class
+*.wav
+.metadata/
