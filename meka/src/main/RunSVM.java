@@ -54,8 +54,7 @@ public class RunSVM {
 	
 	public void CV() throws Exception {
 		for(int idx = 0; idx < nTarget; idx++) {
-			Instances data = F.keepLabels(train, nTarget, new int[]{idx});
-			data.setClassIndex(0);
+			Instances data = removeLabels(train, idx);
 			CVSingle(data);
 		}
 	}
@@ -63,7 +62,6 @@ public class RunSVM {
 	private void CVSingle(Instances data) throws Exception {
 		Attribute a = data.classAttribute();
 		System.out.println("Calculating best c fo " + a.name());
-		data.deleteAttributeType(Attribute.STRING);
 		double maxRecall = 0;
 		double c = 0;
 		for(int i = compPrec; i >= 0; i--){
@@ -78,7 +76,6 @@ public class RunSVM {
 				c = currC;
 			}
 		}
-		System.out.println(c + " " + maxRecall);
 		cValues.put(a, c);		
 	}
 	
@@ -92,24 +89,32 @@ public class RunSVM {
 	
 	private void getBaseline() throws Exception {
 		for(Attribute a: cValues.keySet()){
+			//Prepare train and test set
 			int idx = train.attribute(a.name()).index();
-			Instances newTrain = F.keepLabels(train, nTarget, new int[]{idx});
-			newTrain.setClassIndex(0);
-			newTrain.deleteAttributeType(Attribute.STRING);
-			Instances newTest = F.keepLabels(test, nTarget, new int[]{idx});
-			newTest.setClassIndex(0);
-			newTest.deleteAttributeType(Attribute.STRING);
+			Instances newTrain = removeLabels(train, idx);
+			Instances newTest = removeLabels(test, idx);
+			
+			//Prepare classifier
 			SMO classifier = new SMO();
 			classifier.setC(cValues.get(a));
 			classifier.buildClassifier(newTrain);
+			
+			//Evaluate performance
 			Evaluation eval = new Evaluation(newTrain);
 			eval.evaluateModel(classifier, newTest);
 			double uar = getUAR(eval, a.numValues());
 			System.out.println("Target " + a.name() + " UAR=" + uar);
-			System.out.println("Target " + a.name() + " UAR=" + eval.weightedRecall());
-		}
-		// TODO Auto-generated method stub
-		
+		}		
+	}
+	
+	/*
+	 * Removes all class labels except the one given at idx
+	 */
+	private Instances removeLabels(Instances data, int idx) throws Exception {
+		Instances newData = F.keepLabels(data, nTarget, new int[]{idx});
+		newData.setClassIndex(0);
+		newData.deleteAttributeType(Attribute.STRING);
+		return newData;
 	}
 
 	/**
