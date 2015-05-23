@@ -45,6 +45,8 @@ public class RunSVM {
 		if(mulan){
 			F.mulan2meka(train, nTarget);
 			F.mulan2meka(test, nTarget);
+			train.setClassIndex(nTarget);
+			test.setClassIndex(nTarget);
 		}
 	}
 	
@@ -67,7 +69,7 @@ public class RunSVM {
 			eval.crossValidateModel(classifier, data, folds, new Random(seed));
 			maxRecall = Math.max(getUAR(eval, a.numValues()), maxRecall);
 		}
-		System.out.println(maxRecall);
+		System.out.print(maxRecall + " ");
 		
 	}
 	
@@ -84,9 +86,9 @@ public class RunSVM {
 	 * Runs the SVM classifier on each class, first choosing
 	 * the best C
 	 * Assumes the arff file is in MULAN format, ie. the classes are last
-	 * @throws IOException 
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 		//Load train set
 		BufferedReader reader = new BufferedReader(new FileReader(args[0]));
 		Instances train = new Instances(reader);
@@ -96,6 +98,7 @@ public class RunSVM {
 		Instances test = new Instances(reader);
 		reader.close();
 		RunSVM runSVM = new RunSVM(train, test, args[2], true);
+		runSVM.CV();
 
 	}
 
