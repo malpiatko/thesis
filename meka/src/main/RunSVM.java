@@ -53,8 +53,7 @@ public class RunSVM {
 	public void CV() throws Exception {
 		for(int idx = 0; idx < nTarget; idx++) {
 			int[] toRemove = A.delete(labels.indices, idx);
-			System.out.println(toRemove);
-			Instances data = F.remove(train, toRemove, false);
+			Instances data = F.keepLabels(train, nTarget, new int[]{idx});
 			data.setClassIndex(0);
 			CVSingle(data);
 		}
@@ -65,11 +64,18 @@ public class RunSVM {
 		Attribute a = data.classAttribute();
 		data.deleteAttributeType(Attribute.STRING);
 		double maxRecall = 0;
-		System.out.println("Evaluating class " + a.name());
+		double c = 0;
+		System.out.println(a.name());
 		Evaluation eval = new Evaluation(data);
 		for(int i = 0; i <= compPrec; i++){
-			classifier.setC(Math.pow(10, -i));
+			double currC = Math.pow(10, -i);
+			classifier.setC(currC);
 			eval.crossValidateModel(classifier, data, folds, new Random(seed));
+			double uar = getUAR(eval, a.numValues());
+			if (uar > maxRecall){
+				maxRecall = uar;
+				c = currC;
+			}
 			maxRecall = Math.max(getUAR(eval, a.numValues()), maxRecall);
 		}
 		System.out.println(maxRecall + " ");
