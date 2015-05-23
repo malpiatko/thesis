@@ -60,16 +60,18 @@ public class RunSVM {
 	}
 	
 	private void CVSingle(Instances data) throws Exception {
-		SMO classifier = new SMO();
 		Attribute a = data.classAttribute();
 		data.deleteAttributeType(Attribute.STRING);
 		double maxRecall = 0;
 		double c = 0;
 		System.out.println(a.name());
-		Evaluation eval = new Evaluation(data);
 		for(int i = 0; i <= compPrec; i++){
+			SMO classifier = new SMO();
+			Evaluation eval = new Evaluation(data);
+			
 			double currC = Math.pow(10, -i);
 			classifier.setC(currC);
+			System.out.println(classifier.getC());
 			eval.crossValidateModel(classifier, data, folds, new Random(seed));
 			double uar = getUAR(eval, a.numValues());
 			if (uar > maxRecall){
@@ -77,8 +79,10 @@ public class RunSVM {
 				c = currC;
 			}
 			maxRecall = Math.max(getUAR(eval, a.numValues()), maxRecall);
+			System.out.println("C=" +currC+ " UAR=" + maxRecall);
+
 		}
-		System.out.println(maxRecall + " ");
+		System.out.println("Max UAR=" + maxRecall + "at C=" + c);
 		
 	}
 	
