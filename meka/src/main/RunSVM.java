@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -25,7 +26,7 @@ public class RunSVM {
 	private final int nTarget;
 	private final int compPrec = 4;
 	private LabelSet labels;
-	private Map<Attribute, Double> values;
+	private Map<Attribute, Double> cValues;
 	
 	private int seed = 1;
 	private int folds = 10;
@@ -38,6 +39,7 @@ public class RunSVM {
 		this.train.setClassIndex(nTarget);
 		this.test.setClassIndex(nTarget);
 		labels = new LabelSet(A.make_sequence(nTarget));
+		cValues = new LinkedHashMap<Attribute, Double>();
 	}
 	
 	RunSVM(Instances train, Instances test, String attr, boolean mulan) {
@@ -60,28 +62,24 @@ public class RunSVM {
 	
 	private void CVSingle(Instances data) throws Exception {
 		Attribute a = data.classAttribute();
+		System.out.println("Calculating best c fo " + a.name());
 		data.deleteAttributeType(Attribute.STRING);
 		double maxRecall = 0;
 		double c = 0;
-		System.out.println(a.name());
 		for(int i = compPrec; i >= 0; i--){
 			Evaluation eval = new Evaluation(data);
 			SMO classifier = new SMO();
 			double currC = Math.pow(10, -i);
 			classifier.setC(currC);
-			System.out.println(classifier.getC());
 			eval.crossValidateModel(classifier, data, folds, new Random(seed));
 			double uar = getUAR(eval, a.numValues());
 			if (uar > maxRecall){
 				maxRecall = uar;
 				c = currC;
 			}
-			maxRecall = Math.max(getUAR(eval, a.numValues()), maxRecall);
-			System.out.println("C=" +currC+ " UAR=" + maxRecall);
-
 		}
-		System.out.println("Max UAR=" + maxRecall + "at C=" + c);
-		
+		System.out.println(c + " " + maxRecall);
+		cValues.put(a, c);		
 	}
 	
 	private double getUAR(Evaluation eval, int nClass){
@@ -90,6 +88,28 @@ public class RunSVM {
 			uar += eval.recall(i);
 		}
 		return uar/nClass;
+	}
+	
+	private void getBaseline() throws Exception {
+		for(Attribute a: cValues.keySet()){
+			int idx = train.attribute(a.name()).index();
+			Instances newTrain = F.keepLabels(train, nTarget, new int[]{idx});
+			newTrain.setClassIndex(0);
+			newTrain.deleteAttributeType(Attribute.STRING);
+			Instances newTest = F.keepLabels(test, nTarget, new int[]{idx});
+			newTest.setClassIndex(0);
+			newTest.deleteAttributeType(Attribute.STRING);
+			SMO classifier = new SMO();
+			classifier.setC(cValues.get(a));
+			classifier.buildClassifier(newTrain);
+			Evaluation eval = new Evaluation(newTrain);
+			eval.evaluateModel(classifier, newTest);
+			double uar = getUAR(eval, a.numValues());
+			System.out.println("Target " + a.name() + " UAR=" + uar);
+			System.out.println("Target " + a.name() + " UAR=" + eval.weightedRecall());
+		}
+		// TODO Auto-generated method stub
+		
 	}
 
 	/**
@@ -110,7 +130,7 @@ public class RunSVM {
 		reader.close();
 		RunSVM runSVM = new RunSVM(train, test, args[2], true);
 		runSVM.CV();
-
+		runSVM.getBaseline();
 	}
 
 }
