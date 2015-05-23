@@ -60,7 +60,6 @@ public class TestFilter extends Filter {
 	}
 	
 	private void getTestSet(List<Instances> insts) throws Exception {
-		Instances output = getOutputFormat();
 		
 		for(Instances inst: insts) {
 			Resample filter = new Resample();
