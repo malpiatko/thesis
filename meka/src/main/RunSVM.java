@@ -37,7 +37,7 @@ public class RunSVM {
 		
 		this.train.setClassIndex(nTarget);
 		this.test.setClassIndex(nTarget);
-		labels = new LabelSet(A.make_sequence(1, nTarget));
+		labels = new LabelSet(A.make_sequence(nTarget));
 	}
 	
 	RunSVM(Instances train, Instances test, String attr, boolean mulan) {
@@ -52,8 +52,10 @@ public class RunSVM {
 	
 	public void CV() throws Exception {
 		Instances data;
-		for(int idx : labels.indices) {
-			data = F.remove(train, new int[]{idx}, true);
+		for(int idx = 0; idx < nTarget; idx++) {
+			int[] toRemove = A.delete(labels.indices, idx);
+			data = F.remove(train, toRemove, false);
+			System.out.println(data);
 			CVSingle(data);
 		}
 	}
@@ -62,14 +64,14 @@ public class RunSVM {
 		SMO classifier = new SMO();
 		Attribute a = data.classAttribute();
 		double maxRecall = 0;
-		System.out.println("Evaluating class " + a.name());
+		//System.out.println("Evaluating class " + a.name());
 		Evaluation eval = new Evaluation(data);
 		for(int i = 0; i <= compPrec; i++){
 			classifier.setC(Math.pow(10, -i));
 			eval.crossValidateModel(classifier, data, folds, new Random(seed));
 			maxRecall = Math.max(getUAR(eval, a.numValues()), maxRecall);
 		}
-		System.out.print(maxRecall + " ");
+		//System.out.print(maxRecall + " ");
 		
 	}
 	
