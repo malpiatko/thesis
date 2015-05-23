@@ -18,6 +18,8 @@ public class TestFilter extends Filter {
 	private Attribute b;
 	private int sampleSizePercent = 15;
 	private boolean invert = false;
+	
+	//Default seed
 	private int seed = 1;
 	
 	@Override
