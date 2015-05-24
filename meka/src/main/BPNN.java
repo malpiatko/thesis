@@ -288,7 +288,7 @@ public class BPNN extends AbstractNeuralNet {
 		// Weight update
 		for(int i = 0; i < nW; i++) {
 			//W[i] = W[i].plusEquals(dW[i]);
-			W[i].plusEquals(dW[i]);
+			W[i].plusEquals(dW[i].times(0.01));
 		}
 
 		// Update momentum records

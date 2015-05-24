@@ -2,7 +2,7 @@ package main;
 
 import java.util.Random;
 
-import meka.classifiers.multilabel.BPNN;
+import main.BPNN;
 
 public class CostumBPNN extends BPNN {
 
