@@ -135,7 +135,7 @@ public class MULAN extends MultilabelClassifier {
 		long before = System.currentTimeMillis();
 		if (getDebug()) System.err.print(" moving target attributes to the beginning ... ");
 
-		Random r = instances.getRandomNumberGenerator(0);
+		Random r = new Random(1);
 		String name = "temp_"+MLUtils.getDatasetName(instances)+"_"+r.nextLong()+".arff";
 		System.err.println("Using temporary file: "+name);
 		int L = instances.classIndex();
@@ -187,8 +187,8 @@ public class MULAN extends MultilabelClassifier {
 		else if (m_MethodString.equals("BPMLL")) { //BPMLL is run withthe number of hidden units equal to 20% of the input units.
 			m_MULAN = new BPMLL();
 			((BPMLL)m_MULAN).setLearningRate(0.01);
-			((BPMLL)m_MULAN).setHiddenLayers(new int[]{30});
-			((BPMLL)m_MULAN).setTrainingEpochs(100);
+			((BPMLL)m_MULAN).setHiddenLayers(new int[]{8});
+			((BPMLL)m_MULAN).setTrainingEpochs(1000);
 		}
 		else if (m_MethodString.startsWith("HOMER")) {
 			//Class m = Class.forName("HierarchyBuilder.Method.Random");

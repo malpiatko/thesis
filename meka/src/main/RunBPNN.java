@@ -1,23 +1,14 @@
 package main;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Enumeration;
 import java.util.Random;
-import java.util.Vector;
 
 import meka.classifiers.multilabel.Evaluation;
-import meka.classifiers.multilabel.MULAN;
 import meka.core.F;
 import meka.core.Result;
-import mulan.classifier.neural.model.ActivationLinear;
-import mulan.classifier.neural.model.BasicNeuralNet;
+import mulan.classifier.neural.BPMLL;
 import weka.core.Instances;
-import weka.filters.Filter;
-import weka.filters.supervised.attribute.NominalToBinary;
 
 public class RunBPNN {
 	
@@ -80,10 +71,10 @@ public class RunBPNN {
 		MULAN mulan = new MULAN();
 		mulan.setMethod("BPMLL");
 		mulan.setDebug(true);
-		System.out.println(mulan.listOptions());
 		Result result = Evaluation.evaluateModel(mulan, runBPNN.train, runBPNN.test);
 		System.out.println(Result.getResultAsString(result));
 		//BasicNeuralNet mulanNN = new BasicNeuralNet(new int[]{102,10,2}, 1, ActivationLinear.class, new Random(1));
+		//BPMLL alg = new BPMLL();
 		
 
 	}
