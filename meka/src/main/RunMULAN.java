@@ -111,11 +111,13 @@ public class RunMULAN {
 
 	public static void main(String[] args) throws Exception {
 		
-		int nTarget = Integer.parseInt(args[1]);
+		int nTarget = Integer.parseInt(args[2]);
 		MultiLabelInstances train = new MultiLabelInstances(args[0], nTarget);
-		//MultiLabelInstances test = new MultiLabelInstances(args[1], nTarget);
+		MultiLabelInstances test = new MultiLabelInstances(args[1], nTarget);
 		
-		runFullExperiment(train, args[2]);
+		RunMULAN experiment = new RunMULAN(0.05, 64, 100);
+		experiment.runStandard(train, test);
+		//runFullExperiment(train, args[2]);
 	}
 
 }

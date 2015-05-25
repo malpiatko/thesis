@@ -1,11 +1,21 @@
+#Ignore files specific to R projects
 .Rproj.user
 *.Rhistory
 *.RData
+
+#Ignore all arff files expect the listed
 *.arff
+!*/arff/geneva.arff
+!*/arff/train.arff
+!*/arff/test.arff
+
+#Ignore all irrelevant files in meka directory
+meka/*
+!*.java
+
 *.log
-/personality/*
-/likeability/arff/
-meka/.*
-*.class
 *.wav
 .metadata/
+
+#Ignore old personality analysis
+personality/old

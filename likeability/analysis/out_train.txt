@@ -1,0 +1,360 @@
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 2, epochs: 100
+Macro-averaged Recall: 0.7036±0.0193
+gender: 0.9265±0.1879 likeability: 0.4807±0.1018 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 2, epochs: 200
+Macro-averaged Recall: 0.7000±0.0189
+gender: 0.9193±0.1845 likeability: 0.4807±0.1018 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 2, epochs: 300
+Macro-averaged Recall: 0.6944±0.0198
+gender: 0.9193±0.1845 likeability: 0.4694±0.1021 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 2, epochs: 400
+Macro-averaged Recall: 0.6942±0.0235
+gender: 0.9152±0.1888 likeability: 0.4733±0.1018 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 2, epochs: 500
+Macro-averaged Recall: 0.6909±0.0146
+gender: 0.9149±0.1843 likeability: 0.4668±0.1005 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 2, epochs: 600
+Macro-averaged Recall: 0.7023±0.0200
+gender: 0.9021±0.1849 likeability: 0.5026±0.1022 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 4, epochs: 100
+Macro-averaged Recall: 0.6989±0.0186
+gender: 0.9293±0.1879 likeability: 0.4686±0.1013 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 4, epochs: 200
+Macro-averaged Recall: 0.6980±0.0278
+gender: 0.9179±0.1881 likeability: 0.4781±0.1014 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 4, epochs: 300
+Macro-averaged Recall: 0.7021±0.0300
+gender: 0.9223±0.1881 likeability: 0.4819±0.1016 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 4, epochs: 400
+Macro-averaged Recall: 0.6955±0.0296
+gender: 0.9141±0.1885 likeability: 0.4769±0.1009 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 4, epochs: 500
+Macro-averaged Recall: 0.7032±0.0192
+gender: 0.9223±0.1881 likeability: 0.4842±0.1003 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 4, epochs: 600
+Macro-averaged Recall: 0.7033±0.0232
+gender: 0.9096±0.1888 likeability: 0.4970±0.1050 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 8, epochs: 100
+Macro-averaged Recall: 0.6959±0.0257
+gender: 0.9264±0.1922 likeability: 0.4655±0.1005 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 8, epochs: 200
+Macro-averaged Recall: 0.6999±0.0199
+gender: 0.9268±0.1922 likeability: 0.4729±0.0965 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 8, epochs: 300
+Macro-averaged Recall: 0.6929±0.0195
+gender: 0.9138±0.1881 likeability: 0.4720±0.1004 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 8, epochs: 400
+Macro-averaged Recall: 0.6930±0.0236
+gender: 0.9179±0.1923 likeability: 0.4682±0.1004 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 8, epochs: 500
+Macro-averaged Recall: 0.6916±0.0247
+gender: 0.9261±0.1879 likeability: 0.4571±0.1009 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 8, epochs: 600
+Macro-averaged Recall: 0.6971±0.0203
+gender: 0.9221±0.1879 likeability: 0.4722±0.1010 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 16, epochs: 100
+Macro-averaged Recall: 0.7126±0.0173
+gender: 0.9174±0.1920 likeability: 0.5079±0.1042 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 16, epochs: 200
+Macro-averaged Recall: 0.7046±0.0162
+gender: 0.9174±0.1920 likeability: 0.4918±0.0969 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 16, epochs: 300
+Macro-averaged Recall: 0.7046±0.0162
+gender: 0.9174±0.1920 likeability: 0.4918±0.0969 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 16, epochs: 400
+Macro-averaged Recall: 0.7047±0.0171
+gender: 0.9214±0.1962 likeability: 0.4880±0.0967 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 16, epochs: 500
+Macro-averaged Recall: 0.7030±0.0200
+gender: 0.9302±0.1961 likeability: 0.4758±0.0969 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 16, epochs: 600
+Macro-averaged Recall: 0.6968±0.0188
+gender: 0.9176±0.1880 likeability: 0.4760±0.0975 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 32, epochs: 100
+Macro-averaged Recall: 0.7046±0.0206
+gender: 0.9224±0.1921 likeability: 0.4869±0.1042 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 32, epochs: 200
+Macro-averaged Recall: 0.7026±0.0173
+gender: 0.9183±0.1880 likeability: 0.4869±0.1042 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 32, epochs: 300
+Macro-averaged Recall: 0.7028±0.0197
+gender: 0.9221±0.1879 likeability: 0.4835±0.1047 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 32, epochs: 400
+Macro-averaged Recall: 0.7049±0.0169
+gender: 0.9265±0.1879 likeability: 0.4833±0.1043 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 32, epochs: 500
+Macro-averaged Recall: 0.7030±0.0171
+gender: 0.9265±0.1879 likeability: 0.4794±0.1044 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 32, epochs: 600
+Macro-averaged Recall: 0.7004±0.0180
+gender: 0.9176±0.1880 likeability: 0.4832±0.1008 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 64, epochs: 100
+Macro-averaged Recall: 0.7993±0.3586
+gender: 0.7900±0.3168 likeability: 0.8087±0.3218 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 64, epochs: 200
+Macro-averaged Recall: 0.5554±0.3884
+gender: 0.6843±0.3243 likeability: 0.4264±0.1973 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 64, epochs: 300
+Macro-averaged Recall: 0.4485±0.2226
+gender: 0.7809±0.3090 likeability: 0.1160±0.1074 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 64, epochs: 400
+Macro-averaged Recall: 0.5314±0.1095
+gender: 0.9504±0.2003 likeability: 0.1124±0.1076 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 64, epochs: 500
+Macro-averaged Recall: 0.6194±0.1155
+gender: 0.9473±0.1922 likeability: 0.2915±0.1474 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.05,nodes: 64, epochs: 600
+Macro-averaged Recall: 0.7002±0.0193
+gender: 0.9257±0.1922 likeability: 0.4747±0.1007 
+
