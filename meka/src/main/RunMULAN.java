@@ -2,6 +2,7 @@ package main;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -100,7 +101,7 @@ public class RunMULAN {
 	
 	public static void runFullExperiment(MultiLabelInstances train, String name) throws IllegalArgumentException, Exception {
 		if(name != null){
-			System.setOut(new PrintStream(new BufferedOutputStream(new FileOutputStream(name))));
+			System.setOut(new PrintStream(new File(name)));
 		}
 		for(int nodes = 2; nodes <= 64; nodes*=2) {
 			RunMULAN experiment = new RunMULAN(0.05, nodes, 200);	
