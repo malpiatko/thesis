@@ -19,3 +19,4 @@ meka/*
 
 #Ignore old personality analysis
 personality/old
+personality/wav
