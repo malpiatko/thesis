@@ -1,8 +1,11 @@
 package main;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 import meka.core.F;
@@ -20,7 +23,7 @@ public class RunMULAN {
 	
 	private static long seed = 1;
 	
-	private double defaultRate = 0.01;
+	private double defaultRate = 0.05;
 	private int defaultNodes = 62;
 	private int defaultEpochs = 200;
 
@@ -48,38 +51,25 @@ public class RunMULAN {
 		return eval.evaluate(classifier, test, measures);
 	}
 	
-	public void testLearningRate(MultiLabelInstances train, MultiLabelInstances test) throws IllegalArgumentException, Exception {
+	public void testLearningRate(MultiLabelInstances train) throws IllegalArgumentException, Exception {
 		for(int i = 0; i < 5; i++) {
-			double pow = Math.pow(10,-i);
-			BPMLL classifier = getDefaultClassifier();
-			classifier.setLearningRate(pow);
-			classifier.build(train);
-			Evaluation eval =runEvaluation(classifier, test);
-			System.out.println("Rate=" + pow + "\n" + eval.toString());
+			defaultRate = Math.pow(10,-i);
+			crossV(train, 5);
 		}
 	}
 	
-	public void testNodes(MultiLabelInstances train, MultiLabelInstances test) throws IllegalArgumentException, Exception {
-		int nodes = 1;
+	public void testNodes(MultiLabelInstances train) throws IllegalArgumentException, Exception {
+		defaultNodes = 1;
 		for(int i = 1; i <= 6; i++) {
-			nodes *= 2;
-			BPMLL classifier = getDefaultClassifier();
-			classifier.setHiddenLayers(new int[]{nodes});
-			classifier.build(train);
-			Evaluation eval =runEvaluation(classifier, test);
-			System.out.println("Nodes=" + nodes + "\n" + eval.toString());
+			defaultNodes *= 2;
+			crossV(train, 5);
 		}
 	}
 	
-	public void testEpochs(MultiLabelInstances train, MultiLabelInstances test) throws IllegalArgumentException, Exception {
-		int epochs = 1;
-		for(int i = 1; i <= 10; i++) {
-			epochs = i*100;
-			BPMLL classifier = getDefaultClassifier();
-			classifier.setTrainingEpochs(epochs);
-			classifier.build(train);
-			Evaluation eval =runEvaluation(classifier, test);
-			System.out.println("Epochs=" + epochs + "\n" + eval.toString());
+	public void testEpochs(MultiLabelInstances train) throws IllegalArgumentException, Exception {
+		for(int i = 1; i <= 6; i++) {
+			defaultEpochs = i*100;
+			crossV(train, 5);
 		}
 	}
 	
@@ -90,6 +80,7 @@ public class RunMULAN {
 		ArrayList<Measure> measures = new ArrayList<Measure>();
 		measures.add(new MacroRecall(train.getNumLabels()));
 		MultipleEvaluation evaluation = eval.crossValidate(classifier, train, measures, folds);
+		System.out.println(toString());
 		System.out.println(evaluation.toString());
 	}
 	
@@ -97,18 +88,33 @@ public class RunMULAN {
 		BPMLL classifier = getDefaultClassifier();
 		classifier.build(train);
 		Evaluation eval =runEvaluation(classifier, test);
+		System.out.println(toString());
 		System.out.println(eval.toString());
+	}
+	
+	@Override
+	public String toString() {
+		return "Rate: " + defaultRate + ",nodes: " + defaultNodes + ", epochs: " + defaultEpochs;
+		
+	}
+	
+	public static void runFullExperiment(MultiLabelInstances train, String name) throws IllegalArgumentException, Exception {
+		if(name != null){
+			System.setOut(new PrintStream(new BufferedOutputStream(new FileOutputStream(name))));
+		}
+		for(int nodes = 2; nodes <= 64; nodes*=2) {
+			RunMULAN experiment = new RunMULAN(0.05, nodes, 200);	
+			experiment.testEpochs(train);
+		}
 	}
 
 	public static void main(String[] args) throws Exception {
 		
-		int nTarget = Integer.parseInt(args[2]);
+		int nTarget = Integer.parseInt(args[1]);
 		MultiLabelInstances train = new MultiLabelInstances(args[0], nTarget);
-		MultiLabelInstances test = new MultiLabelInstances(args[1], nTarget);
+		//MultiLabelInstances test = new MultiLabelInstances(args[1], nTarget);
 		
-		RunMULAN experiment = new RunMULAN();
-		experiment.crossV(train, 10);
-		experiment.runStandard(train, test);
+		runFullExperiment(train, args[2]);
 	}
 
 }
