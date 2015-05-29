@@ -99,25 +99,26 @@ public class RunMULAN {
 		
 	}
 	
-	public static void runFullExperiment(MultiLabelInstances train, String name) throws IllegalArgumentException, Exception {
-		if(name != null){
-			System.setOut(new PrintStream(new File(name)));
-		}
-		for(int nodes = 2; nodes <= 64; nodes*=2) {
-			RunMULAN experiment = new RunMULAN(0.05, nodes, 200);	
+	public static void runFullExperiment(MultiLabelInstances train, double rate) throws IllegalArgumentException, Exception {
+		System.setOut(new PrintStream(new File("output.txt")));
+		for(int nodes = 2; nodes <= 16; nodes*=2) {
+			RunMULAN experiment = new RunMULAN(rate, nodes, 200);	
 			experiment.testEpochs(train);
 		}
 	}
 
 	public static void main(String[] args) throws Exception {
 		
-		int nTarget = Integer.parseInt(args[2]);
+		int nTarget = Integer.parseInt(args[1]);
 		MultiLabelInstances train = new MultiLabelInstances(args[0], nTarget);
-		MultiLabelInstances test = new MultiLabelInstances(args[1], nTarget);
+		//MultiLabelInstances test = new MultiLabelInstances(args[1], nTarget);
 		
-		RunMULAN experiment = new RunMULAN(0.05, 64, 100);
-		experiment.runStandard(train, test);
-		//runFullExperiment(train, args[2]);
+		RunMULAN experiment = new RunMULAN(0.01, 64, 600);
+		experiment.crossV(train, 5);
+		//experiment.testEpochs(train);
+		//experiment.testLearningRate(train);
+		//experiment.runStandard(train, test);
+		//runFullExperiment(train, 0.001);
 	}
 
 }
