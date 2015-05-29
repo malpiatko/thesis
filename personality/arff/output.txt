@@ -1,0 +1,240 @@
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 2, epochs: 100
+Macro-averaged Recall: 0.6001±0.0164
+Gender: 0.9697±0.1908 Extraversion: 0.6966±0.1323 Agreeableness: 0.7084±0.1692 Conscientiousness: 0.5287±0.1068 Neuroticism: 0.6867±0.1229 Openness: 0.0105±0.0106 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 2, epochs: 200
+Macro-averaged Recall: 0.6223±0.0054
+Gender: 0.9795±0.2005 Extraversion: 0.8211±0.1828 Agreeableness: 0.6458±0.1310 Conscientiousness: 0.5819±0.1043 Neuroticism: 0.6547±0.1074 Openness: 0.0511±0.0223 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 2, epochs: 300
+Macro-averaged Recall: 0.6159±0.0077
+Gender: 0.9762±0.2008 Extraversion: 0.8378±0.1900 Agreeableness: 0.6619±0.1191 Conscientiousness: 0.4824±0.1030 Neuroticism: 0.6654±0.1235 Openness: 0.0715±0.0233 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 2, epochs: 400
+Macro-averaged Recall: 0.6248±0.0109
+Gender: 0.9762±0.2008 Extraversion: 0.8422±0.1918 Agreeableness: 0.6858±0.1236 Conscientiousness: 0.4767±0.0953 Neuroticism: 0.6601±0.1129 Openness: 0.1079±0.0223 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 2, epochs: 500
+Macro-averaged Recall: 0.6263±0.0098
+Gender: 0.9724±0.2007 Extraversion: 0.8425±0.1902 Agreeableness: 0.7093±0.1305 Conscientiousness: 0.4774±0.0947 Neuroticism: 0.6481±0.1073 Openness: 0.1079±0.0223 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 2, epochs: 600
+Macro-averaged Recall: 0.6249±0.0114
+Gender: 0.9724±0.2007 Extraversion: 0.8316±0.1913 Agreeableness: 0.7083±0.1251 Conscientiousness: 0.4757±0.0938 Neuroticism: 0.6481±0.1073 Openness: 0.1133±0.0224 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 4, epochs: 100
+Macro-averaged Recall: 0.6300±0.0192
+Gender: 0.9586±0.2012 Extraversion: 0.7530±0.1599 Agreeableness: 0.6488±0.1485 Conscientiousness: 0.5746±0.0986 Neuroticism: 0.6279±0.0923 Openness: 0.2170±0.0904 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 4, epochs: 200
+Macro-averaged Recall: 0.6633±0.0151
+Gender: 0.9653±0.2005 Extraversion: 0.7984±0.1764 Agreeableness: 0.6692±0.1310 Conscientiousness: 0.6082±0.1246 Neuroticism: 0.7159±0.1254 Openness: 0.2225±0.0898 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 4, epochs: 300
+Macro-averaged Recall: 0.6735±0.0238
+Gender: 0.9692±0.2012 Extraversion: 0.8321±0.1897 Agreeableness: 0.6576±0.1301 Conscientiousness: 0.6216±0.1237 Neuroticism: 0.7107±0.1250 Openness: 0.2500±0.1122 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 4, epochs: 400
+Macro-averaged Recall: 0.6720±0.0201
+Gender: 0.9654±0.2010 Extraversion: 0.8250±0.1853 Agreeableness: 0.6579±0.1327 Conscientiousness: 0.6121±0.1178 Neuroticism: 0.7090±0.1237 Openness: 0.2626±0.1100 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 4, epochs: 500
+Macro-averaged Recall: 0.6765±0.0203
+Gender: 0.9654±0.2010 Extraversion: 0.8190±0.1879 Agreeableness: 0.6803±0.1310 Conscientiousness: 0.6071±0.1176 Neuroticism: 0.7157±0.1297 Openness: 0.2713±0.1089 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 4, epochs: 600
+Macro-averaged Recall: 0.6777±0.0152
+Gender: 0.9691±0.2011 Extraversion: 0.8190±0.1879 Agreeableness: 0.6867±0.1308 Conscientiousness: 0.5993±0.1142 Neuroticism: 0.7157±0.1297 Openness: 0.2762±0.0971 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 8, epochs: 100
+Macro-averaged Recall: 0.6701±0.0081
+Gender: 0.9621±0.1978 Extraversion: 0.8257±0.1830 Agreeableness: 0.6922±0.1343 Conscientiousness: 0.6270±0.1171 Neuroticism: 0.7131±0.1340 Openness: 0.2007±0.0440 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 8, epochs: 200
+Macro-averaged Recall: 0.6757±0.0100
+Gender: 0.9691±0.2011 Extraversion: 0.8188±0.1770 Agreeableness: 0.6806±0.1284 Conscientiousness: 0.6258±0.1123 Neuroticism: 0.7245±0.1402 Openness: 0.2356±0.0759 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 8, epochs: 300
+Macro-averaged Recall: 0.6772±0.0133
+Gender: 0.9724±0.2007 Extraversion: 0.8301±0.1854 Agreeableness: 0.6638±0.1294 Conscientiousness: 0.6281±0.1119 Neuroticism: 0.7243±0.1337 Openness: 0.2446±0.0546 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 8, epochs: 400
+Macro-averaged Recall: 0.6777±0.0085
+Gender: 0.9691±0.2011 Extraversion: 0.8292±0.1792 Agreeableness: 0.6753±0.1296 Conscientiousness: 0.6289±0.1111 Neuroticism: 0.7190±0.1336 Openness: 0.2446±0.0546 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 8, epochs: 500
+Macro-averaged Recall: 0.6861±0.0108
+Gender: 0.9724±0.2007 Extraversion: 0.8290±0.1808 Agreeableness: 0.7042±0.1356 Conscientiousness: 0.6355±0.1106 Neuroticism: 0.7255±0.1339 Openness: 0.2503±0.0537 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 8, epochs: 600
+Macro-averaged Recall: 0.6849±0.0118
+Gender: 0.9762±0.2008 Extraversion: 0.8290±0.1808 Agreeableness: 0.6867±0.1308 Conscientiousness: 0.6355±0.1106 Neuroticism: 0.7196±0.1340 Openness: 0.2626±0.0539 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 16, epochs: 100
+Macro-averaged Recall: 0.6620±0.0122
+Gender: 0.9653±0.2005 Extraversion: 0.8033±0.1783 Agreeableness: 0.6184±0.1365 Conscientiousness: 0.6161±0.1184 Neuroticism: 0.7184±0.1247 Openness: 0.2505±0.0640 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 16, epochs: 200
+Macro-averaged Recall: 0.6773±0.0094
+Gender: 0.9624±0.2015 Extraversion: 0.8387±0.1708 Agreeableness: 0.6227±0.1289 Conscientiousness: 0.6234±0.1131 Neuroticism: 0.6972±0.1236 Openness: 0.3194±0.0856 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 16, epochs: 300
+Macro-averaged Recall: 0.6777±0.0052
+Gender: 0.9726±0.2008 Extraversion: 0.8454±0.1767 Agreeableness: 0.6236±0.1312 Conscientiousness: 0.6176±0.1055 Neuroticism: 0.6856±0.1294 Openness: 0.3212±0.0849 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 16, epochs: 400
+Macro-averaged Recall: 0.6792±0.0040
+Gender: 0.9726±0.2008 Extraversion: 0.8569±0.1855 Agreeableness: 0.6236±0.1312 Conscientiousness: 0.6176±0.1055 Neuroticism: 0.6904±0.1290 Openness: 0.3143±0.0850 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 16, epochs: 500
+Macro-averaged Recall: 0.6835±0.0084
+Gender: 0.9726±0.2008 Extraversion: 0.8513±0.1870 Agreeableness: 0.6703±0.1362 Conscientiousness: 0.6099±0.1049 Neuroticism: 0.6952±0.1288 Openness: 0.3020±0.0856 
+
+Running cross-validation test
+Fold 1/5
+Fold 2/5
+Fold 3/5
+Fold 4/5
+Fold 5/5
+Rate: 0.001,nodes: 16, epochs: 600
+Macro-averaged Recall: 0.6775±0.0139
+Gender: 0.9726±0.2008 Extraversion: 0.8509±0.1890 Agreeableness: 0.6505±0.1168 Conscientiousness: 0.6221±0.1106 Neuroticism: 0.6893±0.1289 Openness: 0.2795±0.0748 
+

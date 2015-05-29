@@ -1,0 +1,7 @@
+﻿Evaluation Measure:
+As evaluation measure, we retain the choice of unweighted average (UA) recall as used since the first Challenge held in 2009
+[10]. In the given case of two classes (‘X’ and ‘NX’), it is calculated as (Recall(X)+Recall(NX))/2, i. e., the number of instances per class is ignored by intention. The motivation to consider unweighted average recall rather than weighted average (WA) recall (‘conventional’ accuracy, additionally given for reference) is that it is also meaningful for highly unbalanced distributions of instances among classes, as given in former Challenges, and for more than two classes.
+
+
+In Mulan, where all classes are binary, this calculated as:
+(recall + specificity)/2
