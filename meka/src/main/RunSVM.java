@@ -25,7 +25,6 @@ public class RunSVM {
 	private final Instances test;
 	private final int nTarget;
 	private final int compPrec = 4;
-	private LabelSet labels;
 	private Map<Attribute, Double> cValues;
 	
 	private int seed = 1;
@@ -38,7 +37,6 @@ public class RunSVM {
 		
 		this.train.setClassIndex(nTarget);
 		this.test.setClassIndex(nTarget);
-		labels = new LabelSet(A.make_sequence(nTarget));
 		cValues = new LinkedHashMap<Attribute, Double>();
 	}
 	
@@ -61,7 +59,7 @@ public class RunSVM {
 	
 	private void CVSingle(Instances data) throws Exception {
 		Attribute a = data.classAttribute();
-		System.out.println("Calculating best c fo " + a.name());
+		System.out.print("Calculating best c for " + a.name() + " ");
 		double maxRecall = 0;
 		double c = 0;
 		for(int i = compPrec; i >= 0; i--){
@@ -76,6 +74,7 @@ public class RunSVM {
 				c = currC;
 			}
 		}
+		System.out.println(c+ "max recall " + maxRecall);
 		cValues.put(a, c);		
 	}
 	
