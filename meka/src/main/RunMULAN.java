@@ -1,24 +1,15 @@
 package main;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-import meka.core.F;
 import mulan.classifier.neural.BPMLL;
-import mulan.data.InvalidDataFormatException;
 import mulan.data.MultiLabelInstances;
 import mulan.evaluation.Evaluation;
 import mulan.evaluation.Evaluator;
 import mulan.evaluation.MultipleEvaluation;
-import mulan.evaluation.measure.MacroRecall;
 import mulan.evaluation.measure.Measure;
-import weka.core.Instances;
 
 public class RunMULAN {
 	
@@ -47,8 +38,9 @@ public class RunMULAN {
 	
 	public Evaluation runEvaluation(BPMLL classifier, MultiLabelInstances test) throws IllegalArgumentException, Exception {
 		Evaluator eval = new Evaluator();
+		eval.setSeed((int) seed);
 		ArrayList<Measure> measures = new ArrayList<Measure>();
-		measures.add(new MacroRecall(test.getNumLabels()));
+		measures.add(new UARMulan(test.getNumLabels()));
 		return eval.evaluate(classifier, test, measures);
 	}
 	
@@ -78,8 +70,9 @@ public class RunMULAN {
 		System.out.println("Running cross-validation test");
 		BPMLL classifier = getDefaultClassifier();
 		Evaluator eval = new Evaluator();
+		eval.setSeed((int) seed);
 		ArrayList<Measure> measures = new ArrayList<Measure>();
-		measures.add(new MacroRecall(train.getNumLabels()));
+		measures.add(new UARMulan(train.getNumLabels()));
 		MultipleEvaluation evaluation = eval.crossValidate(classifier, train, measures, folds);
 		System.out.println(toString());
 		System.out.println(evaluation.toString());
@@ -101,7 +94,7 @@ public class RunMULAN {
 	
 	public static void runFullExperiment(MultiLabelInstances train, double rate) throws IllegalArgumentException, Exception {
 		System.setOut(new PrintStream(new File("output.txt")));
-		for(int nodes = 2; nodes <= 16; nodes*=2) {
+		for(int nodes = 2; nodes <= 64; nodes*=2) {
 			RunMULAN experiment = new RunMULAN(rate, nodes, 200);	
 			experiment.testEpochs(train);
 		}
@@ -109,16 +102,16 @@ public class RunMULAN {
 
 	public static void main(String[] args) throws Exception {
 		
-		int nTarget = Integer.parseInt(args[1]);
+		int nTarget = Integer.parseInt(args[2]);
 		MultiLabelInstances train = new MultiLabelInstances(args[0], nTarget);
-		//MultiLabelInstances test = new MultiLabelInstances(args[1], nTarget);
+		MultiLabelInstances test = new MultiLabelInstances(args[1], nTarget);
 		
-		RunMULAN experiment = new RunMULAN(0.01, 64, 600);
-		experiment.crossV(train, 5);
+		RunMULAN experiment = new RunMULAN(0.01, 64, 200);
+		//experiment.crossV(train, 5);
 		//experiment.testEpochs(train);
 		//experiment.testLearningRate(train);
-		//experiment.runStandard(train, test);
-		//runFullExperiment(train, 0.001);
+		experiment.runStandard(train, test);
+		//runFullExperiment(train, 0.01);
 	}
 
 }
