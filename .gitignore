@@ -16,6 +16,7 @@ meka/*
 *.log
 *.wav
 .metadata/
+*.txt
 
 #Ignore old personality analysis
 personality/old
